@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
+interface Test {
+  valX: string;
+}
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <span (click)="subscribe(value)">{{title}}</span>
+  `
 })
+
 export class AppComponent {
-  title = 'app';
+  title = 'title';
+  value: Test;
+
+  constructor() {
+    this.value = {valX: '123'};
+  }
+
+  subscribe(val: Test): string {
+    console.log('val', val);
+    return val.valX;
+  }
 }
